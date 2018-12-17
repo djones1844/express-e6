@@ -36,4 +36,5 @@ router.get('/', async (req, res, next) => {
   console.log('DELETE', result)
   res.send(result)
 })
+
 module.exports = router

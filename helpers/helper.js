@@ -1,5 +1,4 @@
 // some useful functions
-
 const crypto = require('crypto')
 
 let helper = {}
@@ -16,7 +15,7 @@ helper.getUUID = () => {
 }
 
 helper.rndStringAll = (strLength) => {
-  let characterList = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYX'
+  const characterList = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYX'
   let str = ''
   for(let i=0; i<strLength; i++){
     str +=  characterList.charAt(Math.floor(Math.random() * characterList.length))
@@ -25,7 +24,7 @@ helper.rndStringAll = (strLength) => {
 }
 
 helper.rndInteger = (strLength) => {
-  intList = '1234567890'
+  const intList = '1234567890'
   let str = ''
   for(let i=0; i<strLength; i++){
     str +=  intList.charAt(Math.floor(Math.random() * intList.length))
@@ -34,7 +33,7 @@ helper.rndInteger = (strLength) => {
 }
 
 _rndUUIDString = (strLength) => {
-  let characterList = '1234567890abcdef'
+  const characterList = '1234567890abcdef'
   let str = ''
   for(let i=0; i<strLength; i++){
     str +=  characterList.charAt(Math.floor(Math.random() * characterList.length))
@@ -42,10 +41,9 @@ _rndUUIDString = (strLength) => {
   return str
 }
 
-
 // create a SHA256 hash useful for passwords
-helper.hashString = (str) => {
-    let hash = crypto.createHmac('sha256', 'shhseeecret23451').update(str).digest('hex')
+helper.hashString = (str, key='shhseeecret23451') => {
+    return crypto.createHmac('sha256', key).update(str).digest('hex')
 }
 
 module.exports = helper 
